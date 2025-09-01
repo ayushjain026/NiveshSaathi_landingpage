@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" class="light"> <!-- Default to light theme -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FundTrackr | #1 Mutual Fund Tracker & Portfolio Management Tool</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Take control of your finances with FundTrackr, the ultimate mutual fund tracker. Automatically import CAMS/KFintech statements, analyze your portfolio, track NAVs, calculate capital gains, and get actionable insights to improve your investment strategy.">
+    <meta name="keywords" content="mutual fund tracker, investment tracking, portfolio management, track records, manage money, investment tips, CAMS statement analyzer, KFintech statement, capital gains report, NAV tracking, SIP tracker, portfolio analysis, XIRR calculator, financial goals">
+    <meta name="author" content="FundTrackr">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.fundtrackr.com/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.fundtrackr.com/">
+    <meta property="og:title" content="FundTrackr | #1 Mutual Fund Tracker & Portfolio Management Tool">
+    <meta property="og:description" content="Take control of your finances with FundTrackr. Automatically import CAMS/KFintech statements, analyze your portfolio, track NAVs, and calculate capital gains.">
+    <meta property="og:image" content="https://placehold.co/1200x630/3b82f6/ffffff?text=FundTrackr-Portfolio-Insights">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.fundtrackr.com/">
+    <meta property="twitter:title" content="FundTrackr | #1 Mutual Fund Tracker & Portfolio Management Tool">
+    <meta property="twitter:description" content="Take control of your finances with FundTrackr. Automatically import CAMS/KFintech statements, analyze your portfolio, track NAVs, and calculate capital gains.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/3b82f6/ffffff?text=FundTrackr-Portfolio-Insights">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --background: #ffffff;
+            --foreground: #0f172a;
+            --card-bg: #f8fafc;
+            --border-color: #e2e8f0;
+            --muted-text: #64748b;
+            --hero-gradient-start: #f0f9ff;
+            --hero-gradient-end: #e0f2fe;
+        }
+
+        html.dark {
+            --background: #020617;
+            --foreground: #f8fafc;
+            --card-bg: #0f172a;
+            --border-color: #1e293b;
+            --muted-text: #94a3b8;
+            --hero-gradient-start: #0f172a;
+            --hero-gradient-end: #020617;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            transition: background-color 0.3s, color 0.3s;
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: linear-gradient(120deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%);
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+        .text-muted { color: var(--muted-text); }
+        .border-color { border-color: var(--border-color); }
+        
+        .theme-switch-wrapper { display: flex; align-items: center; }
+        .theme-switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+        .theme-switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; border-radius: 24px; }
+        .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: #3b82f6; }
+        input:checked + .slider:before { transform: translateX(20px); }
+
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+        
+        .faq-item-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+    </style>
+    
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "FundTrackr",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "152"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "description": "The ultimate mutual fund tracker and portfolio management tool for Indian investors. Automatically import CAMS/KFintech statements, get detailed portfolio insights, track NAVs, and simplify tax reporting.",
+      "featureList": [
+        "Automatic Statement Upload (CAMS/KFintech)",
+        "Comprehensive Portfolio Dashboard",
+        "Daily NAV Tracking",
+        "Detailed Holdings View with Exit Load",
+        "Automated Capital Gains Tax Reporting",
+        "SIP Performance Tracking",
+        "Secure Data Encryption"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Is my financial data secure with FundTrackr?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. We use bank-level 256-bit AES encryption to protect your data. All statement processing happens securely, and we never share your personal or financial information with third parties. Your privacy is our top priority."
+        }
+      },{
+        "@type": "Question",
+        "name": "Which mutual fund statements are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We currently support consolidated account statements (CAS) in both PDF and Excel formats from CAMS and KFintech, which cover the vast majority of mutual funds in India. We are continuously working to support more formats."
+        }
+      },{
+        "@type": "Question",
+        "name": "How does FundTrackr help with investment tips and managing money?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FundTrackr empowers you to make smarter investment decisions by providing clear, actionable data. While we don't offer direct financial advice, our platform helps you understand your portfolio's asset allocation, identify underperforming funds, track your progress towards financial goals, and see tax implications before you sell. This clarity is a powerful tool for better money management."
+        }
+      },{
+        "@type": "Question",
+        "name": "How do I calculate capital gains for my mutual funds?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FundTrackr automates this process. Once you upload your statements, our system uses the FIFO (First-In, First-Out) method to calculate your Short-Term Capital Gains (STCG) and Long-Term Capital Gains (LTCG) accurately for all transactions, saving you from complex manual calculations."
+        }
+      }]
+    }
+    </script>
+
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md" style="background-color: hsla(0, 0%, 100%, 0.8); border-bottom: 1px solid var(--border-color);">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3">
+                <i data-lucide="line-chart" class="text-blue-600 w-7 h-7"></i>
+                <h1 class="text-2xl font-bold">FundTrackr</h1>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#features" class="text-muted hover:text-blue-500 transition-colors">Features</a>
+                <a href="#dashboard-preview" class="text-muted hover:text-blue-500 transition-colors">Preview</a>
+                <a href="#knowledge-hub" class="text-muted hover:text-blue-500 transition-colors">Insights</a>
+                <a href="#testimonials" class="text-muted hover:text-blue-500 transition-colors">Testimonials</a>
+                <a href="#faq" class="text-muted hover:text-blue-500 transition-colors">FAQ</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-muted hover:text-blue-500 transition-colors font-medium text-sm">Login</a>
+                <a href="#" class="bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition-colors text-sm">Create Free Account</a>
+                <div class="theme-switch-wrapper pl-2">
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle" />
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-gradient pt-40 pb-24 px-6">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl font-extrabold mb-5 leading-tight">The Smartest Way to Track Your Mutual Fund Portfolio</h2>
+                <p class="text-lg md:text-xl text-muted max-w-3xl mx-auto mb-10">
+                    Stop guessing. Start tracking. Automatically import transactions, visualize your growth, and manage your money effectively with a powerful, intuitive dashboard built for Indian investors.
+                </p>
+                <div class="flex justify-center items-center gap-4">
+                    <a href="#" class="bg-blue-600 text-white font-bold px-8 py-4 rounded-lg shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105 inline-block">
+                        Start Your Free Trial
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-24 px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold">Everything You Need for Intelligent Portfolio Management</h3>
+                    <p class="text-muted mt-4 max-w-2xl mx-auto">FundTrackr brings all your crucial investment data into one place, presented with perfect clarity.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature Cards -->
+                    <div class="card p-8 rounded-xl feature-card transition-all">
+                        <div class="bg-blue-500/10 text-blue-500 w-12 h-12 rounded-lg flex items-center justify-center mb-5"><i data-lucide="upload-cloud"></i></div>
+                        <h4 class="text-xl font-bold mb-2">Seamless Statement Upload</h4>
+                        <p class="text-muted">Drag and drop your CAMS/KFintech statements (PDF or Excel). Our system automatically extracts and organizes every transaction in seconds.</p>
+                    </div>
+                    <div class="card p-8 rounded-xl feature-card transition-all">
+                        <div class="bg-blue-500/10 text-blue-500 w-12 h-12 rounded-lg flex items-center justify-center mb-5"><i data-lucide="layout-dashboard"></i></div>
+                        <h4 class="text-xl font-bold mb-2">At-a-Glance Dashboard</h4>
+                        <p class="text-muted">Monitor key metrics like invested amount, current value, and daily profit/loss. Visualize your yearly growth and portfolio XIRR.</p>
+                    </div>
+                    <div class="card p-8 rounded-xl feature-card transition-all">
+                        <div class="bg-blue-500/10 text-blue-500 w-12 h-12 rounded-lg flex items-center justify-center mb-5"><i data-lucide="library"></i></div>
+                        <h4 class="text-xl font-bold mb-2">Detailed Holdings View</h4>
+                        <p class="text-muted">See a full breakdown of your funds, units, and current values. A color-coded system shows you exactly when exit loads apply.</p>
+                    </div>
+                    <div class="card p-8 rounded-xl feature-card transition-all">
+                        <div class="bg-blue-500/10 text-blue-500 w-12 h-12 rounded-lg flex items-center justify-center mb-5"><i data-lucide="file-text"></i></div>
+                        <h4 class="text-xl font-bold mb-2">Automated Tax Reporting</h4>
+                        <p class="text-muted">Generate comprehensive capital gains reports instantly. We separate Short-Term (STCG) and Long-Term (LTCG) gains for you.</p>
+                    </div>
+                    <div class="card p-8 rounded-xl feature-card transition-all">
+                        <div class="bg-blue-500/10 text-blue-500 w-12 h-12 rounded-lg flex items-center justify-center mb-5"><i data-lucide="activity"></i></div>
+                        <h4 class="text-xl font-bold mb-2">Daily NAV Updates</h4>
+                        <p class="text-muted">Your portfolio value is always current. We fetch the latest NAVs daily to give you the most accurate picture of your investments.</p>
+                    </div>
+                    <div class="card p-8 rounded-xl feature-card transition-all">
+                        <div class="bg-blue-500/10 text-blue-500 w-12 h-12 rounded-lg flex items-center justify-center mb-5"><i data-lucide="shield-check"></i></div>
+                        <h4 class="text-xl font-bold mb-2">Bank-Grade Security</h4>
+                        <p class="text-muted">Your financial data is yours alone. We use 256-bit AES encryption to ensure your information is always protected.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Preview Section -->
+        <section id="dashboard-preview" class="py-24 px-6" style="background-color: var(--card-bg);">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold">Your Portfolio, Reimagined</h3>
+                    <p class="text-muted mt-4 max-w-2xl mx-auto">An intuitive interface designed to provide insights, not confusion.</p>
+                </div>
+                <div class="card rounded-xl p-4 md:p-8 shadow-2xl">
+                    <!-- Detailed SVG Mockup -->
+                    <svg viewBox="0 0 800 450" class="rounded-lg w-full" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="800" height="450" rx="8" :fill="document.documentElement.classList.contains('dark') ? '#0f172a' : '#f8fafc'"></rect>
+                        <rect x="20" y="20" width="180" height="410" rx="8" :fill="document.documentElement.classList.contains('dark') ? '#020617' : '#ffffff'"></rect>
+                        <circle cx="50" cy="50" r="15" fill="#3b82f6"></circle>
+                        <rect x="75" y="42" width="90" height="16" rx="4" :fill="document.documentElement.classList.contains('dark') ? '#1e293b' : '#e2e8f0'"></rect>
+                        <rect x="35" y="90" width="150" height="25" rx="5" :fill="document.documentElement.classList.contains('dark') ? '#3b82f6' : '#3b82f6'"></rect>
+                        <rect x="50" y="95" width="120" height="15" rx="3" fill="#ffffff" fill-opacity="0.9"></rect>
+                        <rect x="35" y="130" width="150" height="25" rx="5" :fill="document.documentElement.classList.contains('dark') ? '#1e293b' : '#e2e8f0'"></rect>
+                        <rect x="35" y="170" width="150" height="25" rx="5" :fill="document.documentElement.classList.contains('dark') ? '#1e293b' : '#e2e8f0'"></rect>
+
+                        <rect x="220" y="20" width="560" height="80" rx="8" :fill="document.documentElement.classList.contains('dark') ? '#020617' : '#ffffff'"></rect>
+                        <text x="240" y="50" font-size="20" font-weight="bold" :fill="document.documentElement.classList.contains('dark') ? '#f8fafc' : '#0f172a'">Dashboard</text>
+                        
+                        <rect x="240" y="120" width="160" height="70" rx="8" :fill="document.documentElement.classList.contains('dark') ? '#020617' : '#ffffff'"></rect>
+                        <text x="255" y="145" font-size="12" :fill="document.documentElement.classList.contains('dark') ? '#94a3b8' : '#64748b'">Invested</text>
+                        <text x="255" y="170" font-size="20" font-weight="bold" :fill="document.documentElement.classList.contains('dark') ? '#f8fafc' : '#0f172a'">₹1,25,430</text>
+                        
+                        <rect x="420" y="120" width="160" height="70" rx="8" :fill="document.documentElement.classList.contains('dark') ? '#020617' : '#ffffff'"></rect>
+                        <text x="435" y="145" font-size="12" :fill="document.documentElement.classList.contains('dark') ? '#94a3b8' : '#64748b'">Current Value</text>
+                        <text x="435" y="170" font-size="20" font-weight="bold" :fill="document.documentElement.classList.contains('dark') ? '#f8fafc' : '#0f172a'">₹1,42,880</text>
+
+                        <rect x="600" y="120" width="160" height="70" rx="8" :fill="document.documentElement.classList.contains('dark') ? '#020617' : '#ffffff'"></rect>
+                        <text x="615" y="145" font-size="12" :fill="document.documentElement.classList.contains('dark') ? '#94a3b8' : '#64748b'">Total Profit</text>
+                        <text x="615" y="170" font-size="20" font-weight="bold" fill="#22c55e">+₹17,450</text>
+                        
+                        <rect x="220" y="210" width="370" height="220" rx="8" :fill="document.documentElement.classList.contains('dark') ? '#020617' : '#ffffff'"></rect>
+                        <text x="240" y="235" font-size="14" font-weight="bold" :fill="document.documentElement.classList.contains('dark') ? '#f8fafc' : '#0f172a'">Yearly Growth</text>
+                        <path d="M240 400 C 280 350, 320 380, 360 340 S 440 280, 480 300 S 540 320, 570 280" stroke="#3b82f6" stroke-width="3" fill="none"></path>
+
+                        <rect x="610" y="210" width="170" height="220" rx="8" :fill="document.documentElement.classList.contains('dark') ? '#020617' : '#ffffff'"></rect>
+                        <text x="630" y="235" font-size="14" font-weight="bold" :fill="document.documentElement.classList.contains('dark') ? '#f8fafc' : '#0f172a'">Holdings</text>
+                        <circle cx="640" cy="270" r="15" fill="#3b82f6"></circle>
+                        <rect x="665" y="265" width="90" height="10" rx="3" :fill="document.documentElement.classList.contains('dark') ? '#1e293b' : '#e2e8f0'"></rect>
+                        <circle cx="640" cy="310" r="15" fill="#22c55e"></circle>
+                        <rect x="665" y="305" width="70" height="10" rx="3" :fill="document.documentElement.classList.contains('dark') ? '#1e293b' : '#e2e8f0'"></rect>
+                        <circle cx="640" cy="350" r="15" fill="#ef4444"></circle>
+                        <rect x="665" y="345" width="80" height="10" rx="3" :fill="document.documentElement.classList.contains('dark') ? '#1e293b' : '#e2e8f0'"></rect>
+                        <circle cx="640" cy="390" r="15" fill="#f97316"></circle>
+                        <rect x="665" y="385" width="60" height="10" rx="3" :fill="document.documentElement.classList.contains('dark') ? '#1e293b' : '#e2e8f0'"></rect>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Knowledge Hub Section -->
+        <section id="knowledge-hub" class="py-24 px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold">From Data to Decisions: Your Investment Knowledge Hub</h3>
+                    <p class="text-muted mt-4 max-w-2xl mx-auto">We don't just show you numbers; we provide the clarity you need to build a better investment strategy.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card p-8 rounded-xl">
+                        <div class="bg-blue-500/10 text-blue-500 w-12 h-12 rounded-lg flex items-center justify-center mb-5"><i data-lucide="pie-chart"></i></div>
+                        <h4 class="text-xl font-bold mb-2">Understand Asset Allocation</h4>
+                        <p class="text-muted">Visualize your exposure to equity, debt, and hybrid funds. See if your portfolio aligns with your risk appetite and rebalance with confidence.</p>
+                    </div>
+                    <div class="card p-8 rounded-xl">
+                         <div class="bg-blue-500/10 text-blue-500 w-12 h-12 rounded-lg flex items-center justify-center mb-5"><i data-lucide="target"></i></div>
+                        <h4 class="text-xl font-bold mb-2">Track Your Financial Goals</h4>
+                        <p class="text-muted">Are your SIPs on track to meet your long-term goals? Our performance metrics help you understand your real returns (XIRR) and stay focused.</p>
+                    </div>
+                    <div class="card p-8 rounded-xl">
+                        <div class="bg-blue-500/10 text-blue-500 w-12 h-12 rounded-lg flex items-center justify-center mb-5"><i data-lucide="receipt"></i></div>
+                        <h4 class="text-xl font-bold mb-2">Smart Tax Planning</h4>
+                        <p class="text-muted">Don't get surprised at tax time. Our capital gains reports help you plan your redemptions strategically to minimize your tax liability.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-24 px-6" style="background-color: var(--card-bg);">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold">Trusted by Investors Like You</h3>
+                    <p class="text-muted mt-4 max-w-2xl mx-auto">See how FundTrackr is helping users gain control over their financial future.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card p-8 rounded-xl">
+                        <p class="text-muted mb-4">"Finally, a tool that makes sense of my mess of statements. The automated capital gains calculator is worth its weight in gold. Saved me hours of work!"</p>
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/40?u=a" alt="Priya Sharma, a satisfied retail investor using FundTrackr" class="w-10 h-10 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold">Priya Sharma</h4>
+                                <p class="text-sm text-muted">Retail Investor</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card p-8 rounded-xl">
+                         <p class="text-muted mb-4">"As someone new to mutual funds, the dashboard gave me the clarity I needed. Seeing my daily profit and overall portfolio XIRR is incredibly motivating."</p>
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/40?u=b" alt="Rohan Mehta, a software engineer who manages his investments with FundTrackr" class="w-10 h-10 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold">Rohan Mehta</h4>
+                                <p class="text-sm text-muted">Software Engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card p-8 rounded-xl">
+                        <p class="text-muted mb-4">"The exit load tracking is a game-changer. I used to track it on a spreadsheet, but this is automatic and error-free. A must-have tool for serious investors."</p>
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/40?u=c" alt="Anjali Desai, a financial consultant recommending FundTrackr" class="w-10 h-10 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold">Anjali Desai</h4>
+                                <p class="text-sm text-muted">Financial Consultant</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-24 px-6">
+            <div class="container mx-auto max-w-4xl">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold">Frequently Asked Questions</h3>
+                    <p class="text-muted mt-4">Have questions? We have answers.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="faq-item card rounded-lg p-1">
+                        <button class="faq-item-header w-full flex justify-between items-center text-left p-4">
+                            <span class="text-lg font-semibold">Is my financial data secure?</span>
+                            <i data-lucide="chevron-down" class="transition-transform"></i>
+                        </button>
+                        <div class="faq-item-content px-4">
+                            <p class="text-muted pb-4">Absolutely. We use bank-level 256-bit AES encryption to protect your data. All statement processing happens securely, and we never share your personal or financial information with third parties.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item card rounded-lg p-1">
+                        <button class="faq-item-header w-full flex justify-between items-center text-left p-4">
+                            <span class="text-lg font-semibold">Which statements are supported?</span>
+                            <i data-lucide="chevron-down" class="transition-transform"></i>
+                        </button>
+                        <div class="faq-item-content px-4">
+                            <p class="text-muted pb-4">We currently support consolidated account statements (CAS) in both PDF and Excel formats from CAMS and KFintech, which cover the vast majority of mutual funds in India.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item card rounded-lg p-1">
+                        <button class="faq-item-header w-full flex justify-between items-center text-left p-4">
+                            <span class="text-lg font-semibold">How do you provide investment tips?</span>
+                            <i data-lucide="chevron-down" class="transition-transform"></i>
+                        </button>
+                        <div class="faq-item-content px-4">
+                            <p class="text-muted pb-4">FundTrackr focuses on providing you with clear data and tracking tools to help you make *your own* informed decisions. While we don't offer direct financial advice, the clarity our platform provides on your portfolio's performance, asset allocation, and tax implications is a powerful tip in itself for better money management.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item card rounded-lg p-1">
+                        <button class="faq-item-header w-full flex justify-between items-center text-left p-4">
+                            <span class="text-lg font-semibold">How do I calculate capital gains on my mutual funds?</span>
+                            <i data-lucide="chevron-down" class="transition-transform"></i>
+                        </button>
+                        <div class="faq-item-content px-4">
+                            <p class="text-muted pb-4">FundTrackr automates this complex process. After uploading your statements, our tool accurately calculates both Short-Term Capital Gains (STCG) and Long-Term Capital Gains (LTCG) using the FIFO method, giving you a downloadable report ready for tax filing.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item card rounded-lg p-1">
+                        <button class="faq-item-header w-full flex justify-between items-center text-left p-4">
+                            <span class="text-lg font-semibold">Is there a free trial?</span>
+                            <i data-lucide="chevron-down" class="transition-transform"></i>
+                        </button>
+                        <div class="faq-item-content px-4">
+                            <p class="text-muted pb-4">Yes! You can sign up and use FundTrackr to track a limited number of funds for free. Our premium plan unlocks unlimited funds, detailed historical analysis, and advanced reporting features. You can get started for free with no credit card required.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="py-24 px-6" style="background-color: var(--card-bg);">
+            <div class="container mx-auto text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Take Control of Your Investments?</h2>
+                <p class="text-lg text-muted max-w-2xl mx-auto mb-8">
+                    Stop spending hours on spreadsheets. Get the clarity you deserve in minutes and start making smarter financial decisions today.
+                </p>
+                <a href="#" class="bg-blue-600 text-white font-bold px-8 py-4 rounded-lg shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105 inline-block">
+                    Sign Up Now - It's Free
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-color" style="background-color: var(--background);">
+        <div class="container mx-auto px-6 py-8 text-center text-muted">
+             <div class="flex items-center justify-center space-x-2 mb-4">
+                <i data-lucide="line-chart" class="text-muted"></i>
+                <h1 class="text-xl font-bold">FundTrackr</h1>
+            </div>
+            <div class="flex justify-center space-x-6 my-4">
+                <a href="#" class="hover:text-blue-500">Blog</a>
+                <a href="#" class="hover:text-blue-500">Privacy Policy</a>
+                <a href="#" class="hover:text-blue-500">Terms of Service</a>
+                <a href="#" class="hover:text-blue-500">Contact</a>
+            </div>
+            <p>&copy; 2025 FundTrackr. All Rights Reserved. A tool for smart portfolio management.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Theme Toggle
+        const toggleSwitch = document.querySelector('#theme-toggle');
+        const svgElement = document.querySelector('#dashboard-preview svg');
+
+        const applyTheme = (theme) => {
+            document.documentElement.setAttribute('class', theme);
+            const header = document.querySelector('header');
+            if (theme === 'dark') {
+                toggleSwitch.checked = true;
+                header.style.backgroundColor = 'hsla(222, 83%, 5%, 0.8)';
+            } else {
+                toggleSwitch.checked = false;
+                 header.style.backgroundColor = 'hsla(0, 0%, 100%, 0.8)';
+            }
+            // Trigger a re-render of the SVG by changing a non-visual attribute
+            if(svgElement) {
+                svgElement.setAttribute('data-theme', theme);
+            }
+        };
+        
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        applyTheme(currentTheme);
+
+        toggleSwitch.addEventListener('change', (e) => {
+            const theme = e.target.checked ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+            applyTheme(theme);
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const header = item.querySelector('.faq-item-header');
+            const content = item.querySelector('.faq-item-content');
+            const icon = header.querySelector('i');
+
+            header.addEventListener('click', () => {
+                const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+                // Close all items
+                faqItems.forEach(i => {
+                    i.querySelector('.faq-item-content').style.maxHeight = '0px';
+                    i.querySelector('.faq-item-header i').style.transform = 'rotate(0deg)';
+                })
+
+                // Open the clicked one if it was closed
+                if (!isOpen) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
+
